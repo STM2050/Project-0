@@ -1,6 +1,6 @@
 from model.customer import Customer
 import psycopg
-#import copy
+
 
 class CustomerDao:
 
@@ -8,7 +8,6 @@ class CustomerDao:
 
         with psycopg.connect(host="localhost", port="5432", dbname="postgres", user="postgres",
                              password="T@ti2019") as conn:
-
             with conn.cursor() as cur:
                 cur.execute("SELECT * FROM customers")
 
@@ -28,7 +27,7 @@ class CustomerDao:
         with psycopg.connect(host="localhost", port="5432", dbname="postgres", user="postgres",
                              password="T@ti2019") as conn:
             with conn.cursor() as cur:
-                cur.execute("DELETE * FROM customers WHERE id = %s", (customer_id,))
+                cur.execute("DELETE FROM customers WHERE id = %s", (customer_id,))
 
                 rows_deleted = cur.rowcount
 
@@ -51,7 +50,7 @@ class CustomerDao:
                 conn.commit()
 
                 return Customer(customer_row_inserted[0], customer_row_inserted[1],
-                                customer_row_inserted[2], customer_row_inserted[3], customer_row_inserted[4])
+                                customer_row_inserted[2])
 
     def get_customer_by_id(self, customer_id):
 
@@ -80,10 +79,26 @@ class CustomerDao:
 
                 conn.commit()
 
-                update_customer_row = cur.fetchone()
-                if update_customer_row is None:
+                updated_customer_row = cur.fetchone()
+                if updated_customer_row is None:
                     return None
 
-                return Customer(update_customer_row[0], update_customer_row[1],
-                                update_customer_row[2], update_customer_row[3],
-                                update_customer_row[4])
+                return Customer(updated_customer_row[0], updated_customer_row[1],
+                                updated_customer_row[2])
+
+    def get_customer_by_customername(self, customername):
+      with psycopg.connect(host="localhost", port="5432", dbname="postgres", user="postgres",
+                                 password="T@ti2019") as conn:
+
+          with conn.cursor() as cur:
+                cur.execute("SELECT * FROM customers WHERE customername = %s", (customername,))
+
+                customer_row = cur.fetchone()
+                if not customer_row:
+                    return None
+
+                c_id = customer_row[0]
+                customername = customer_row[1]
+                active = customer_row[2]
+
+                return Customer(c_id, customername, active)

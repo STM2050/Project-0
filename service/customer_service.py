@@ -1,9 +1,6 @@
 from dao.customer_dao import CustomerDao
-from exception.invalid_parameter import InvalidParameterError
 from exception.customer_not_found import CustomerNotFoundError
-
-
-
+from exception.customer_already_exists import CustomerAlreadyExistsError
 
 class CustomerService:
 
@@ -30,6 +27,8 @@ class CustomerService:
         return None
 
     def add_customer(self, customer_object):
+        if self.customer_dao.get_customer_by_customername(customer_object.customername) is not None:
+            raise CustomerAlreadyExistsError(f"Customer with name {customer_object.customername} already exists")
 
         added_customer_object = self.customer_dao.add_customer(customer_object)
         return added_customer_object.to_dict()

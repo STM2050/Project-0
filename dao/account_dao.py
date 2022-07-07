@@ -15,19 +15,7 @@ class AccountDao:
 
                 return account_list
 
-    def get_all_accounts_greater_by_customer_id(self, customer_id, query_value):
-        with psycopg.connect(host="localhost", port="5432", dbname="postgres", user="postgres",
-                             password="T@ti2019") as conn:
-            with conn.cursor() as cur:
-                cur.execute("SELECT * FROM accounts WHERE customer_id = %s and balance > %s", (customer_id, query_value))
-
-                acc_g_list = []
-
-                for row in cur:
-                    acc_g_list.append(Account(row[0], row[1], row[2], row[3]))
-
-                return acc_g_list
-
+    #
     #def get_all_accounts_less_by_customer_id(self, customer_id, value_2):
         #with psycopg.connect(host="localhost", port="5432", dbname="postgres", user="postgres",
                              #password="T@ti2019") as conn:
@@ -55,3 +43,20 @@ class AccountDao:
                     #acc_b_list.append(Account(row[0], row[1], row[2], row[3]))
 
                 #return acc_b_list
+    def get_account_by_account_id(self, account_id):
+        with psycopg.connect(host="localhost", port="5432", dbname="postgres", user="postgres",
+                             password="T@ti2019") as conn:
+            with conn.cursor() as cur:
+                cur.execute("SELECT * FROM accounts WHERE id = %s", (account_id,))
+
+                account_row = cur.fetchone()
+                if not account_row:
+                    return None
+
+                a_id = account_row[0]
+                account = account_row[1]
+                balance = account_row[2]
+                customer_id = account_row[3]
+
+                return Account(a_id, account, balance, customer_id)
+

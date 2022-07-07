@@ -9,11 +9,11 @@ class AccountService:
         self.account_dao = AccountDao()
         self.customer_dao = CustomerDao()
 
-    def get_all_accounts_by_customer_id(self, customer_id, query_1):
+    def get_all_accounts_by_customer_id(self, customer_id):
 
-        print(query_1.to_dict())
-        if self.customer_dao.get_customer_by_id(customer_id) is None:
-            raise CustomerNotFoundError(f"Customer with id {customer_id} was not found")
+        # print(query_1.to_dict())
+        # if self.customer_dao.get_customer_by_id(customer_id) is None:
+        #     raise CustomerNotFoundError(f"Customer with id {customer_id} was not found")
 
         #if query_1 is None and query_2 is None:
             #return list(map(lambda a:a.to_dict(), self.account_dao.get_all_accounts_customer_by_id(customer_id)))
@@ -34,8 +34,8 @@ class AccountService:
             #                                                                                           query_1
             #                                                                                           query_2))))
 
-        else:
-            return []
+        #else:
+            #return []
 
         return list(map(lambda a: a.to_dict(), self.account_dao.get_all_accounts_by_customer_id(customer_id)))
 
@@ -43,9 +43,12 @@ class AccountService:
 
 
 
-    #def get_account_by_customer_id_and_account_id(self, customer_id, account_id):
-        #if self.account_dao.get_account_by_customer_id_and_account_id(customer_id, account_id) is None:
+    def get_account_by_customer_id_and_account_id(self, customer_id, account_id):
+        if self.account_dao.get_account_by_customer_id(customer_id,) is None:
 
-            #raise AccountNotFoundError(f"Customer with id {customer_id} does not have account with id {account_id} ")
+            if self.account_dao.get_account_by_account_id(account_id,) is None:
 
-        #return list(map(lambda a: a.to_dict(), self.account_dao.get_all_accounts_by_customer_id(customer_id, account_id)))
+                raise AccountNotFoundError(f"Customer with id {customer_id} does not have account with id {account_id} ")
+
+        return list(map(lambda a: a.to_dict(), self.account_dao.get_all_accounts_by_customer_id(customer_id),
+                        self.account_dao.get_account_by_account_id(account_id)))
