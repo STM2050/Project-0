@@ -15,31 +15,27 @@ account_service = AccountService()
 
 @ac.route('/customers/<customer_id>/accounts')
 def get_all_accounts_by_customer_id(customer_id):
-
-    try:
-        return {
+    amount_gt = request.args.get('amountGreaterThan')
+    amount_lt = request.args.get('amountLessThan')
+    if amount_gt is not None and amount_lt is not None:
+        pass
+    elif amount_gt is not None and amount_lt is None:
+        pass
+    elif amount_gt is None and amount_lt is not None:
+        pass
+    else:
+        try:
+            return {
             "accounts": account_service.get_all_accounts_by_customer_id(customer_id)
         }, 200
-    except CustomerNotFoundError as e:
-        return {
+        except CustomerNotFoundError as e:
+            return {
             "message" : str(e)
-        }
+        }, 404
 
-    # balance_gt = request.args.get('balanceGreaterThan', None)
-    # balance_lt = request.args.get('balanceLessThan', None)
-    # if balance_lt('amountLessThan') is not None and balance_gt('amountGreaterthan') is not None:
-    #     return list(map(lambda a: a.to_dict, self.account_dao.get_all_between_by_customer_id(customer_id,
-    #                                                                                              query_1,
-    #                                                                                              query_2)))
-    # elif balance_lt('amountLessThan') is not None:
-    #     pass
-    #
-    # elif balance_gt('amountGreaterThan') is not None:
-    #     pass
-    #
-    # else:
-    #     pass
-    # return jsonify()
+
+
+
 
 
 @ac.route('/customers/<customer_id>/accounts/<account_id>')
@@ -58,25 +54,28 @@ def get_accounts_by_customer_id_and_account_id(customer_id, account_id):
 
 @ac.route('/cusomters/<customer_id>/accounts', methods=['POST'])
 def add_account_by_customer_id(customer_id):
-    customer_id_json_dictionary = request.get_json()
-    customer_id_object = Customer(customer_id, customer_id_json_dictionary['account'],None)
+    account_json_dictionary = request.get_json()
+    account_object = Account(customer_id, account_json_dictionary['account'],
+                              account_json_dictionary['balance'])
     try:
-        return customer_service.add_account_by_customer_id(customer_id_object), 201
+        return account_service.add_account_by_customer_id(account_object), 201
     except CustomerNotFoundError as e:
         return {
             "message": str(e)
-        }, 400
+        }, 404
+    except AccountNotFoundError as e:
+        return {
+            "message": str(e)
+        }, 404
 #
 @ac.route('/customers/<customer_id>/accounts/<account_id>', methods=['PUT'])
 def update_account_by_customer_id_and_account_id(customer_id, account_id):
     try:
-        ac_json_dictionary = request.get_json()
+        json_dictionary = request.get_json()
         return {
-            "accounts": account_service.update_account_by_customer_id_and_account_id(account_id,
-                                                                                     ac_json_dictionary["balance"],
-                                                                                     customer_id,
-                                                                                     ac_json_dictionary["account"])
-
+            "accounts": account_service.update_account_by_customer_id_and_account_id(Account(customer_id,
+                                                                                             json_dictionary['account'],
+                                                                         json_dictionary['balance'], account_id))
         }
 
     except AccountNotFoundError as e:
@@ -91,11 +90,13 @@ def update_account_by_customer_id_and_account_id(customer_id, account_id):
 @ac.route('/customers/<customer_id>/accounts/<account_id>', methods=['DELETE'])
 def delete_account_by_account_id(customer_id, account_id):
     try:
-        account_service.delete_account_by_account_id(customer_id, account_id)
 
-        return {
-            "message": f"Customer id {customer_id}  with account id {account_id}  was deleted succefully"
+        return{
+            "accounts": account_service.delete_account_by_account_id(account_id)
         }
+
+
+        return
     except CustomerNotFoundError as e:
         return {
             "message": str(e)

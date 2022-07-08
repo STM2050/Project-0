@@ -88,7 +88,7 @@ class AccountDao:
                     conn.commit()
                     return True
 
-    def add_account(self, account_object):
+    def add_account_by_customer_id(self, account_object):
         account_to_add = account_object.account
         balance_to_add = account_object.balance
 

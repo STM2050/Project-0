@@ -53,20 +53,22 @@ class AccountService:
 
 
     def delete_account_by_account_id(self, account_id):
-        if not self.account_dao.delete_account_by_account_id(account_id):
+        if not self.account_dao.delete_account_by_account_id:
             raise AccountNotFoundError(f"Account with {account_id} was not found")
 
         return None
 
 
-    def add_account(self, account_object):
-        if " " in account_object.account:
-            raise InvalidParameterError("Account name cannot contain spaces")
+    def add_account_by_customer_id(self, account_object):
+        if self.customer_dao.get_customer_by_id(account_object.customer_id) is None:
+
+            if " " in account_object.account:
+                raise InvalidParameterError("Account name cannot contain spaces")
 
         if self.account_dao.get_account_by_account(account_object.account) is not None:
             raise AccountAlreadyExistsError(f"Account with name {account_object.account} already exists")
 
-        added_account_object = self.account_dao.add_account(account_object)
+        added_account_object = self.account_dao.add_account_by_customer_id(account_object)
         return added_account_object.to_dict()
 
 

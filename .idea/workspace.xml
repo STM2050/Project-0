@@ -33,7 +33,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.banking">
+  <component name="RunManager" selected="Python tests.Python tests in service_unit_tests">
     <configuration name="account_service" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="project_0" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -97,7 +97,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_customer_service.test_get_all_customers" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_customer_service.test_add_customer_postive" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="project_0" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -107,11 +107,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_customer_service.test_get_all_customers&quot;" />
+      <option name="_new_target" value="&quot;test_customer_service.test_add_customer_postive&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_customer_service.test_update_customer_by_id_negative" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in service_unit_tests" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="project_0" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -121,17 +121,17 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_customer_service.test_update_customer_by_id_negative&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/service_unit_tests&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests in service_unit_tests" />
         <item itemvalue="Python.banking" />
+        <item itemvalue="Python tests.Python tests for test_customer_service.test_add_customer_postive" />
         <item itemvalue="Python.customer_dao" />
         <item itemvalue="Python.account_service" />
-        <item itemvalue="Python tests.Python tests for test_customer_service.test_update_customer_by_id_negative" />
-        <item itemvalue="Python tests.Python tests for test_customer_service.test_get_all_customers" />
       </list>
     </recent_temporary>
   </component>
