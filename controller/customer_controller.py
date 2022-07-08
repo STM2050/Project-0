@@ -45,11 +45,11 @@ def update_customer_by_id(customer_id):
 @cc.route('/customers', methods=['POST'])
 def add_customer():
     customer_json_dictionary = request.get_json()
-    customer_object = Customer(customer_json_dictionary['customername'], customer_json_dictionary['active'],
-                               customer_json_dictionary['id'])
+    customer_object = Customer(None, customer_json_dictionary['customername'], None)
     try:
         return {
-                   "customers": customer_service.add_customer(customer_object)}, 201
+                   "customers": customer_service.add_customer(customer_object)
+               }, 201
     except InvalidParameterError as e:
         return {
                    "message": str(e)

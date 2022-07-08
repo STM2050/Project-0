@@ -27,11 +27,14 @@ class CustomerService:
         return None
 
     def add_customer(self, customer_object):
-        if self.customer_dao.get_customer_by_customername(customer_object.customername) is not None:
-            raise CustomerAlreadyExistsError(f"Customer with name {customer_object.customername} already exists")
+        added_customer_object= self.customer_dao.add_customer(customer_object)
 
-        added_customer_object = self.customer_dao.add_customer(customer_object)
+
+
         return added_customer_object.to_dict()
+
+
+
 
     def update_customer_by_id(self, customer_object):
         updated_customer_object = self.customer_dao.update_customer_by_id(customer_object)
@@ -39,4 +42,11 @@ class CustomerService:
         if updated_customer_object is None:
             raise CustomerNotFoundError(f"Customer with id {customer_object.id} was not found")
 
-        return updated_customer_object.to.dict()
+        return updated_customer_object.to_dict()
+
+    def add_account_by_customer_id(self, customer_id_object):
+        if self.customer_dao.get_customer_by_customername(customer_id_object.customername) is not None:
+            raise CustomerAlreadyExistsError(f"Customer with name {customer_id_object.customername} already exists")
+
+        added_customer_object = self.customer_dao.add_customer(customer_id_object)
+        return added_customer_object.to_dict()
