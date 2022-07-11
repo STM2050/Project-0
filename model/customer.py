@@ -1,6 +1,6 @@
 class Customer:
-    def __init__(self, id, customername, active):
-        self.id = id
+    def __init__(self, customer_id, customername, active):
+        self.id = customer_id
         self.customername = customername
         self.active = active
 

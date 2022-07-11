@@ -50,12 +50,12 @@ class AccountDao:
             with conn.cursor() as cur:
                 cur.execute("SELECT * FROM accounts WHERE customer_id = %s AND balance < %s",
                             (customer_id, amount_lt))
-            account_less_list = []
+                account_less_list = []
 
-            for row in cur:
-                account_less_list.append(Account(row[0], row[1], row[2], row[3]))
+                for row in cur:
+                    account_less_list.append(Account(row[0], row[1], row[2], row[3]))
 
-            return account_less_list
+                return account_less_list
 
     def get_account_by_account_id(self, account_id):
         with psycopg.connect(host="localhost", port="5432", dbname="postgres", user="postgres",

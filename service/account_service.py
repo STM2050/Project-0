@@ -1,6 +1,5 @@
 from dao.account_dao import AccountDao
 from dao.customer_dao import CustomerDao
-from exception.account_already_exists import AccountAlreadyExistsError
 from exception.account_not_found import AccountNotFoundError
 from exception.customer_not_found import CustomerNotFoundError
 
