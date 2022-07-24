@@ -88,19 +88,19 @@ class CustomerDao:
                 return Customer(updated_customer_row[0], updated_customer_row[1],
                                 updated_customer_row[2])
 
-    # def get_customer_by_customername(self, customername):
-    #   with psycopg.connect(host="localhost", port="5432", dbname="postgres", user="postgres",
-    #                              password="T@ti2019") as conn:
-    #
-    #       with conn.cursor() as cur:
-    #             cur.execute("SELECT * FROM customers WHERE customername = %s",(customername,))
-    #
-    #             customer_row = cur.fetchone()
-    #             if not customer_row:
-    #                 return None
-    #
-    #             c_id = customer_row[0]
-    #             customername = customer_row[1]
-    #             active = customer_row[2]
-    #
-    #             return Customer(c_id, customername, active)
+    def get_customer_by_customername(self, customername):
+      with psycopg.connect(host="localhost", port="5432", dbname="postgres", user="postgres",
+                                 password="T@ti2019") as conn:
+
+          with conn.cursor() as cur:
+                cur.execute("SELECT * FROM customers WHERE customername = %s",(customername,))
+
+                customer_row = cur.fetchone()
+                if not customer_row:
+                    return None
+
+                c_id = customer_row[0]
+                customername = customer_row[1]
+                active = customer_row[2]
+
+                return Customer(c_id, customername, active)

@@ -56,6 +56,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_customer_service.test_add_customer_negative_customername_already_exists" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="project_0" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/service_unit_tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_customer_service.test_add_customer_negative_customername_already_exists&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for test_customer_service.test_add_customer_postive" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="project_0" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -67,20 +81,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_customer_service.test_add_customer_postive&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_customer_service.test_delete_customer_by_id_negative" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="project_0" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/service_unit_tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_customer_service.test_delete_customer_by_id_negative&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -98,7 +98,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in service_unit_tests" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_customer_service.test_update_customer_by_id_positive" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="project_0" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -108,16 +108,16 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/service_unit_tests&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="_new_target" value="&quot;test_customer_service.test_update_customer_by_id_positive&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.banking" />
-        <item itemvalue="Python tests.Python tests in service_unit_tests" />
         <item itemvalue="Python tests.Python tests for test_customer_service.test_update_customer_by_id_negative" />
-        <item itemvalue="Python tests.Python tests for test_customer_service.test_delete_customer_by_id_negative" />
+        <item itemvalue="Python tests.Python tests for test_customer_service.test_update_customer_by_id_positive" />
+        <item itemvalue="Python tests.Python tests for test_customer_service.test_add_customer_negative_customername_already_exists" />
         <item itemvalue="Python tests.Python tests for test_customer_service.test_add_customer_postive" />
       </list>
     </recent_temporary>
@@ -132,5 +132,16 @@
       <updated>1656440831894</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/service_unit_tests/test_customer_service.py</url>
+          <line>128</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

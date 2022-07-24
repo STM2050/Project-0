@@ -144,37 +144,37 @@ def test_add_customer_negative_customername_already_exists(mocker):
 
 def test_update_customer_by_id_positive(mocker):
 
-    updated_customer_object = Customer(10, "DuPointe, Xander", False)
+    updated_customer_object = Customer(1, "Testing, 123", "true")
 
-    def mock_updated_cusomter_by_id(self, customer_object):
-        if customer_object.id == 10:
-            return Customer(10, "DuPointe, Xander", False)
+    def mock_update_customer_by_id(self, customer_object):
+        if customer_object.id == 1:
+            return Customer(1, "Testing, 123", "true")
         else:
             return None
 
-    mocker.patch("dao.customer.CustomerDao.update_customer_by_id", mock_updated_cusomter_by_id)
+    mocker.patch("dao.customer_dao.CustomerDao.update_customer_by_id", mock_update_customer_by_id)
 
     customer_service = CustomerService()
 
     actual = customer_service.update_customer_by_id(updated_customer_object)
 
     assert actual == {
-        "id": 10,
-        "customername": "DuPointe, Xander",
-        "active": False
+        "id": 1,
+        "customername": "Testing, 123",
+        "active": "true"
     }
 
 def test_update_customer_by_id_negative(mocker):
 
-    updated_customer_object = Customer(100, "DuPointe, Xander", False)
+    updated_customer_object = Customer(100, "DuPointe, Xander", "false")
 
-    def mock_updated_cusomter_by_id(self, customer_object):
-        if customer_object == 10:
-            return Customer(10, "DuPointe, Xander", False)
+    def mock_update_customer_by_id(self, customer_object):
+        if customer_object == 1:
+            return Customer(1, "DuPointe, Xander", "false")
         else:
             return None
 
-    mocker.patch("dao.customer_dao.CustomerDao.updated_customer_by_id", mock_updated_cusomter_by_id)
+    mocker.patch("dao.customer_dao.CustomerDao.updated_customer_by_id", mock_update_customer_by_id)
 
     customer_service = CustomerService()
 
